@@ -1,0 +1,60 @@
+# -*- mode: python ; coding: utf-8 -*-
+
+
+block_cipher = None
+
+
+a = Analysis(['Server.py', 'Camera.py', 'Config.py'],
+             pathex=['C:\\Users\\LEADTEK\\anaconda3\\envs\\yolov5\\Lib\\site-packages\\', 
+			 'D:\\Image-Abnormal-Detection\\AIModule\\',
+			 'D:\\Image-Abnormal-Detection\\AIModule\\models',
+			 'D:\\Image-Abnormal-Detection\\AIModule\\utils',
+			 'D:\\Image-Abnormal-Detection\\Logger\\'],
+             binaries=[],
+             datas=[('D:\\Image-Abnormal-Detection\\config\\*.txt','.\\config'),
+			('D:\\Image-Abnormal-Detection\\config\\*.jpg','.\\config'),
+			('D:\\Image-Abnormal-Detection\\config\\setting.cfg','.\\config'),
+			('D:\\Image-Abnormal-Detection\\config\\*.jpeg','.\\config'),
+			('D:\\Image-Abnormal-Detection\\static\\css\\*.css','.\\static\\css'),
+			('D:\\Image-Abnormal-Detection\\static\\font\\*.ttf','.\\static\\font'),
+			('D:\\Image-Abnormal-Detection\\static\\icon\\*.css','.\\static\\icon'),
+			('D:\\Image-Abnormal-Detection\\static\\images\\*.jpg','.\\static\\images'),
+			('D:\\Image-Abnormal-Detection\\static\\images\\*.png','.\\static\\images'),
+			('D:\\Image-Abnormal-Detection\\static\\js\\*.js','.\\static\\js'),
+			('D:\\Image-Abnormal-Detection\\static\\sound\\*.mp3','.\\static\\sound'),
+			('D:\\Image-Abnormal-Detection\\templates\\*.html','.\\templates'),
+			('D:\\Image-Abnormal-Detection\\weights\\*.pt','.\\weights')],
+             hiddenimports=['intel-openmp'],
+             hookspath=[],
+             runtime_hooks=[],
+             excludes=[],
+             win_no_prefer_redirects=False,
+             win_private_assemblies=False,
+             cipher=block_cipher,
+             noarchive=False)
+pyz = PYZ(a.pure, a.zipped_data,
+             cipher=block_cipher)
+
+exe = EXE(pyz,
+          a.scripts, 
+          [],
+          exclude_binaries=True,
+          name='Server',
+          debug=False,
+          bootloader_ignore_signals=False,
+          strip=False,
+          upx=True,
+          console=True,
+		  icon='AULOGO.ico', 
+          disable_windowed_traceback=False,
+          target_arch=None,
+          codesign_identity=None,
+          entitlements_file=None )
+coll = COLLECT(exe,
+               a.binaries,
+               a.zipfiles,
+               a.datas, 
+               strip=False,
+               upx=True,
+               upx_exclude=[],
+               name='Server')
